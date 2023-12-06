@@ -7,6 +7,14 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
 
+const corsOptions = {
+  origin: 'https://redux-front.vercel.app', 
+  credentials: true,
+  exposedHeaders: ["set-cookie"]
+};
+app.options('*', cors(corsOptions));
+app.use(cors(corsOptions));
+
 mongoose.connect('mongodb://127.0.0.1:27017/LoginSignForm', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
